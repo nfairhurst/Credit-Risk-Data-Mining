@@ -224,6 +224,7 @@ ggplot(
   aes(x = property_type)
 ) +
   geom_bar() +
+  coord_flip() +
   labs(
     title = "Property Type",
     x = "Property Type",
@@ -232,7 +233,7 @@ ggplot(
   theme_minimal()
 
 ggsave(
-  "plots/property_type.png",
+  "property_type.png",
   width = 7,
   height = 5
 )
