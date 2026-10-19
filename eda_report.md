@@ -87,7 +87,7 @@ Most loans are for principal residences.
 
 ## Property Type
 
-![Property Type](property_type.png)
+![Property Type](property_type_horizontal.png)
 
 Single-family homes are the most common property type.
 
