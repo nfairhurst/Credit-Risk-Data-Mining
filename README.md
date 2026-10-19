@@ -4,14 +4,6 @@
 
 This project uses the Fannie Mae Single-Family Loan Performance Data to study mortgage credit risk through data mining processes.
 
-The current stage of the project focuses on:
-
-- understanding the raw dataset
-- applying the official Fannie Mae data dictionary
-- auditing missing values, duplicate records, unique values, and potential outliers
-- preprocessing the data while preserving the original raw dataset
-- preparing the data for later data mining methods
-
 The main goal is to identify meaningful patterns in mortgage risk and eventually analyze which borrower and loan characteristics are associated with delinquency.
 
 ## Dataset
@@ -108,18 +100,40 @@ K-means clustering will be used to identify natural groups of mortgages with sim
 
 This may reveal different mortgage risk profiles within the dataset.
 
-### Apriori Association Rules
+### Association Rules or Anomaly Detection
 
-Apriori association-rule mining will be used to identify combinations of borrower, loan, and property characteristics that frequently occur together.
+Apriori association-rule mining is currently being considered to identify combinations of borrower, loan, and property characteristics that frequently occur together.
 
-Numeric variables such as credit score, DTI, and LTV may later be converted into categories so that they can be used in association-rule mining.
+Numeric variables such as credit score, DTI, and LTV may be converted into categories for association-rule mining.
 
-The goal will be to identify interpretable patterns that may be associated with mortgage delinquency.
+However, exploratory analysis may indicate that anomaly detection is more appropriate if delinquency-related patterns are too rare for useful association rules.
+
+The final third mining method will be selected based on the results of the exploratory analysis.
+
+## Exploratory Data Analysis
+
+Exploratory data analysis was performed on both the monthly loan records and a one-row-per-loan version of the dataset.
+
+The analysis examined:
+
+- credit score
+- debt-to-income ratio
+- loan-to-value ratio
+- original loan balance
+- mortgage interest rate
+- loan term
+- loan purpose
+- occupancy status
+- property type
+- origination channel
+- delinquency status
+
+The EDA also compared median borrower and loan characteristics between delinquent and non-delinquent loans.
+
+[View the full EDA Report](https://github.com/nfairhurst/Credit-Risk-Data-Mining/blob/main/eda_report.md)
 
 ## Current Limitations
 
 The current dataset contains 2026 Q1 activity, which provides a relatively short performance period for many loans.
 
-Because mortgage delinquency may take time to develop, an older loan cohort may eventually be used for the predictive portion of the project so that loans have a longer performance history.
-
-The dataset is also longitudinal, meaning monthly observations from the same mortgage should not be treated as completely separate loans.
+Because mortgage delinquency may take time to develop, an older loan dataset may eventually be used for the predictive section of the project so that loans have a longer performance history.
