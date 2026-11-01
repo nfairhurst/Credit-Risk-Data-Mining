@@ -132,8 +132,42 @@ The EDA also compared median borrower and loan characteristics between delinquen
 
 [View the full EDA Report](https://github.com/nfairhurst/Credit-Risk-Data-Mining/blob/main/eda_report.md)
 
-## Current Limitations
+## Prepared Dataset and Method Plan
 
-The current dataset contains 2026 Q1 activity, which provides a relatively short performance period for many loans.
+For the three data mining methods chosen, separate datasets will be created for each data mining method because the methods require different types of variables.
 
-Because mortgage delinquency may take time to develop, an older loan dataset may eventually be used for the predictive section of the project so that loans have a longer performance history.
+### Random Forest Dataset
+
+The Random Forest dataset will use borrower, loan, property, and origination characteristics as predictor variables.
+
+The response variable will be delinquency status:
+
+- Delinquent
+- Not Delinquent
+
+Variables that directly describe later loan performance will not be used as predictor variables.
+
+### K-Means Dataset
+
+The K-means dataset will use selected numeric variables such as:
+
+- credit score
+- debt-to-income ratio
+- loan-to-value ratio
+- original loan balance
+- mortgage interest rate
+- original loan term
+
+These variables will later be standardized before clustering.
+
+Delinquency status will not be used to create the clusters.
+
+### Anomaly Detection Dataset
+
+The anomaly detection dataset will also use selected numeric borrower and loan characteristics.
+
+The goal will be to identify loans with unusual combinations of characteristics.
+
+The identified unusual loans can later be compared with delinquency status and other loan characteristics.
+
+These datasets will be used separately when each data mining method is performed.
