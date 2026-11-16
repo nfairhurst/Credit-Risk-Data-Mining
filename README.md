@@ -132,24 +132,28 @@ The EDA also compared median borrower and loan characteristics between delinquen
 
 [View the full EDA Report](https://github.com/nfairhurst/Credit-Risk-Data-Mining/blob/main/eda_report.md)
 
-## Prepared Dataset and Method Plan
+## Prepared Datasets
 
-For the three data mining methods chosen, separate datasets will be created for each data mining method because the methods require different types of variables.
+Separate datasets were created for each of the three data mining methods.
+
+Each dataset contains one row per mortgage loan, rather than multiple monthly records.
 
 ### Random Forest Dataset
 
-The Random Forest dataset will use borrower, loan, property, and origination characteristics as predictor variables.
+The Random Forest dataset contains borrower, loan, property, and origination characteristics as predictor variables.
 
-The response variable will be delinquency status:
+The response variable is delinquency status:
 
 - Delinquent
 - Not Delinquent
 
-Variables that directly describe later loan performance will not be used as predictor variables.
+Variables describing later loan performance were excluded from the predictors.
+
+Categorical variables were converted into factors, and missing values were handled before training the model.
 
 ### K-Means Dataset
 
-The K-means dataset will use selected numeric variables such as:
+The K-means dataset contains six numeric variables:
 
 - credit score
 - debt-to-income ratio
@@ -158,16 +162,56 @@ The K-means dataset will use selected numeric variables such as:
 - mortgage interest rate
 - original loan term
 
-These variables will later be standardized before clustering.
+Records with missing values were removed, and the variables were standardized before clustering.
 
-Delinquency status will not be used to create the clusters.
+Delinquency status was excluded from the clustering variables.
 
 ### Anomaly Detection Dataset
 
-The anomaly detection dataset will also use selected numeric borrower and loan characteristics.
+The anomaly detection dataset uses the same six numeric variables as K-means.
 
-The goal will be to identify loans with unusual combinations of characteristics.
+Records with missing values were removed before applying Isolation Forest.
 
-The identified unusual loans can later be compared with delinquency status and other loan characteristics.
+The algorithm assigns an anomaly score to each mortgage based on how unusual its characteristics are.
 
-These datasets will be used separately when each data mining method is performed.
+The top 1% of scores were flagged as anomalies.
+
+## Mining Results
+
+The three data mining methods were applied to the prepared mortgage datasets.
+
+### K-Means Clustering
+
+K-means identified three groups of mortgages with different characteristics:
+
+- **Cluster 1:** Lower credit scores, higher DTI ratios, and higher interest rates.
+- **Cluster 2:** Higher credit scores and larger loan balances.
+- **Cluster 3:** Shorter loan terms and lower LTV ratios.
+
+Cluster 1 had the highest observed delinquency rate at 1.12%.
+
+### Anomaly Detection
+
+Isolation Forest identified 2,663 unusual mortgages, representing approximately 1% of the analyzed loans.
+
+Anomalous loans had lower average credit scores, DTI ratios, LTV ratios, and shorter loan terms.
+
+The observed delinquency rate was 0.94% for anomalous loans compared with 0.68% for normal loans.
+
+### Random Forest
+
+Random Forest was used to predict mortgage delinquency.
+
+The initial model produced:
+
+- **Accuracy:** 89.37%
+- **Precision:** 1.22%
+- **Recall:** 17.14%
+
+Original loan balance, credit score, DTI, and interest rate were the most important variables in the model according to importance.
+
+The low precision and recall indicate that predicting delinquency remains difficult due to the class imbalance.
+
+[View the Full Mining Results Report](mining_results.md)
+
+
