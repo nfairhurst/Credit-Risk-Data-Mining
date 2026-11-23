@@ -214,4 +214,14 @@ The low precision and recall indicate that predicting delinquency remains diffic
 
 [View the Full Mining Results Report](mining_results.md)
 
+## Sensitivity Analysis
+
+Sensitivity analysis was performed on all three data mining methods to examine how different model settings affected the results.
+
+- **K-Means:** Compared different numbers of clusters.
+- **Anomaly Detection:** Compared different anomaly score cutoffs.
+- **Random Forest:** Compared prediction thresholds and class weighting.
+
+[View the Full Sensitivity Analysis Report](sensitivity_analysis.md)
+
 
